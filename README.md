@@ -1,5 +1,7 @@
 # minit
 
+[![Build Status](https://travis-ci.org/yankeguo/minit.svg?branch=master)](https://travis-ci.org/yankeguo/minit)
+
 **WORKING IN PROGRESS**
 
 minimal init daemon for container, supports systemd service files
