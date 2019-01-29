@@ -1,7 +1,7 @@
 package minit
 
 import (
-	"errors"
+	"fmt"
 	"os"
 	"path/filepath"
 )
@@ -15,11 +15,6 @@ var (
 		"/usr/lib/systemd/system",
 		"/usr/local/lib/systemd/system",
 	}
-)
-
-var (
-	// ErrNotFound unit file not found
-	ErrNotFound = errors.New("unit file not found")
 )
 
 // SearchUnitFile search the unit file
@@ -48,6 +43,6 @@ func SearchUnitFile(name string) (ret string, err error) {
 
 	// all tried, not found
 	ret = ""
-	err = ErrNotFound
+	err = fmt.Errorf("unit file not found: %s", name)
 	return
 }
