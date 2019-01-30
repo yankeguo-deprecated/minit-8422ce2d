@@ -2,18 +2,45 @@ package minit
 
 import (
 	"io"
-	"os"
 )
 
 // Service service unit file
 type Service struct {
-	Type                 string
-	ExecStart            string
-	ExecStop             string
-	User                 string
-	Group                string
-	RuntimeDirectory     string
-	RuntimeDirectoryMode os.FileMode
+	Type string
+
+	PIDFile string
+
+	ExecStartPre  string
+	ExecStart     string
+	ExecStartPost string
+
+	ExecStop     string
+	ExecStopPost string
+
+	Restart string
+
+	// Paths
+	RootDirectory    string
+	WorkingDirectory string
+
+	// Credentials
+	User  string
+	Group string
+
+	// Sandboxing
+	RuntimeDirectory           string
+	RuntimeDirectoryMode       string
+	StateDirectory             string
+	StateDirectoryMode         string
+	CacheDirectory             string
+	CacheDirectoryMode         string
+	LogsDirectory              string
+	LogsDirectoryMode          string
+	ConfigurationDirectory     string
+	ConfigurationDirectoryMode string
+
+	// Environment
+	Environments []string
 }
 
 func (s *Service) assign(sec, key, val string) {
