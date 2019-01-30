@@ -26,10 +26,10 @@ var (
 		" key4 = val4 = val4 = val4 ",
 	}
 	TestUnitFileAContent = []TestLine{
-		TestLine{Sec: "", Key: "key1", Val: "val1"},
-		TestLine{Sec: "sec b", Key: "key2", Val: "val2"},
-		TestLine{Sec: "sec b", Key: "key3", Val: "val3"},
-		TestLine{Sec: "sec c", Key: "key4", Val: "val4 = val4 = val4"},
+		{Sec: "", Key: "key1", Val: "val1"},
+		{Sec: "sec b", Key: "key2", Val: "val2"},
+		{Sec: "sec b", Key: "key3", Val: "val3"},
+		{Sec: "sec c", Key: "key4", Val: "val4 = val4 = val4"},
 	}
 )
 

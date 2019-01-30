@@ -1,6 +1,8 @@
 package minit
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -15,6 +17,9 @@ var (
 		"/usr/lib/systemd/system",
 		"/usr/local/lib/systemd/system",
 	}
+
+	// RuntimeDirectory runtime directory, i.e. /run
+	RuntimeDirectory = "/run"
 )
 
 // SearchUnitFile search the unit file
@@ -45,4 +50,16 @@ func SearchUnitFile(name string) (ret string, err error) {
 	ret = ""
 	err = fmt.Errorf("unit file not found: %s", name)
 	return
+}
+
+// RandomString random string
+func RandomString(bytes int) string {
+	buf := make([]byte, bytes)
+	rand.Read(buf)
+	return hex.EncodeToString(buf)
+}
+
+// RandomFilename random filename
+func RandomFilename(prefix, suffix string, bytes int) string {
+	return prefix + "." + RandomString(bytes) + "." + suffix
 }
